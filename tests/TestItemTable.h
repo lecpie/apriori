@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
+#include "AutoTest.h"
+
 #include "ItemTable.h"
 
 namespace dm
@@ -22,6 +24,8 @@ private slots:
     void test_normal     (void);
     void test_duplicate (void);
 };
+
+DECLARE_TEST (TestItemTable)
 
 }
 

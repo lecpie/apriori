@@ -7,7 +7,6 @@
 using namespace std;
 using namespace dm;
 
-QTEST_MAIN (TestItemTable)
 
 void TSTITMTBLE::initTestCase (void)
 {

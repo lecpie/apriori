@@ -27,8 +27,11 @@ public:
 
     // Get the number if item in the table
     unsigned get_size (void) const;
-};
+
+}; // class ItemTable
+
+} // namespace dm
 
 #endif // ITEMTABLE_H
 
-}
+
