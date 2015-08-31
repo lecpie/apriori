@@ -1,4 +1,6 @@
-#include "TestDBScanner.h"
+
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include <string>
 #include <iostream>
@@ -6,17 +8,20 @@
 
 #include <ItemSet.h>
 #include <ItemTable.h>
-
-#define TSTDBSCN dm::TestDBScanner
+#include <DBScanner.h>
 
 using namespace std;
-using namespace dm;
 
-void TSTDBSCN::test_sample (void)
+namespace dm
+{
+
+BOOST_AUTO_TEST_SUITE(TestDBScanner)
+
+BOOST_AUTO_TEST_CASE (test_sample)
 {
     ifstream in ("sample/example1.txt");
 
-    QVERIFY (in.is_open());
+    BOOST_REQUIRE (in.is_open());
 
     ItemTable table;
 
@@ -29,3 +34,7 @@ void TSTDBSCN::test_sample (void)
 
     }
 }
+
+BOOST_AUTO_TEST_SUITE_END()
+
+} // namespace dm

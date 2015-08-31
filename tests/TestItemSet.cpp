@@ -1,41 +1,36 @@
-// source : http://qtcreator.blogspot.se/2009/10/running-multiple-unit-tests.html
-
-#include "TestItemSet.h"
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "ItemSet.h"
 
-#define TSTITMST dm::TestItemSet
-
 using namespace std;
-using namespace dm;
 
-
-void TSTITMST::initTestCase(void)
+namespace dm
 {
 
-}
+BOOST_AUTO_TEST_SUITE( TestItemSet )
 
-void TSTITMST::test_normal (void)
+BOOST_AUTO_TEST_CASE (test_normal)
 {
     ItemSet items;
 
     items.insert(1);
     items.insert(3);
 
-    QVERIFY (items.size() == 2);
+    BOOST_CHECK (items.size() == 2);
 }
 
-void TSTITMST::test_duplicates  (void)
+BOOST_AUTO_TEST_CASE (test_duplicates)
 {
 
 }
 
-void TSTITMST::test_comparisons (void)
+BOOST_AUTO_TEST_CASE (test_comparisons)
 {
 
 }
 
-void TSTITMST::test_intersect   (void)
+BOOST_AUTO_TEST_CASE (test_intersect)
 {
     ItemSet a, b;
 
@@ -45,11 +40,11 @@ void TSTITMST::test_intersect   (void)
     ItemSet c (a.intersect(b));
     ItemSet d (b.intersect(a));
 
-    QVERIFY (c.size() == 1);
-    QVERIFY (c == d);
+    BOOST_CHECK (c.size() == 1);
+    BOOST_CHECK (c == d);
 }
 
-void TSTITMST::test_union (void)
+BOOST_AUTO_TEST_CASE (test_union)
 {
     ItemSet a, b;
 
@@ -59,11 +54,11 @@ void TSTITMST::test_union (void)
     ItemSet c (a.uni(b));
     ItemSet d (b.uni(a));
 
-    QVERIFY (c.size() == 3);
-    QVERIFY (c == d);
+    BOOST_CHECK (c.size() == 3);
+    BOOST_CHECK (c == d);
 }
 
-void TSTITMST::test_minus (void)
+BOOST_AUTO_TEST_CASE (test_minus)
 {
     ItemSet a,b,e;
 
@@ -74,9 +69,12 @@ void TSTITMST::test_minus (void)
 
     ItemSet c (a - b);
 
-    QVERIFY (c.size() == 1);
-    QVERIFY (c == e);
+    BOOST_CHECK (c.size() == 1);
+    BOOST_CHECK (c == e);
 
-    QVERIFY ((a - 2) == (b - 4));
+    BOOST_CHECK ((a - 2) == (b - 4));
 }
 
+BOOST_AUTO_TEST_SUITE_END()
+
+}

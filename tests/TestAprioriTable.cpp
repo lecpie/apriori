@@ -1,13 +1,20 @@
-#include "TestAprioriTable.h"
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "AprioriTable.h"
 
-#define TSTAPRTBL dm::TestAprioriTable
-
 using namespace std;
-using namespace dm;
 
-void TSTAPRTBL::test_normal (void)
+namespace dm
+{
+
+BOOST_AUTO_TEST_SUITE (TestAprioriTable)
+
+BOOST_AUTO_TEST_CASE (test_normal)
 {
     //TODO
 }
+
+BOOST_AUTO_TEST_SUITE_END()
+
+} // namespace dm

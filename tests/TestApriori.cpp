@@ -1,19 +1,26 @@
-#include "TestApriori.h"
 
-#include <iostream>
+#define BOOST_TEST_MODULE apriori
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "Apriori.h"
 
-#define TSTAPR dm::TestApriori
+#include <iostream>
 
 using namespace std;
 using namespace dm;
 
-void TSTAPR::test_normal (void)
+namespace dm
+{
+
+BOOST_AUTO_TEST_SUITE( TestApriori )
+
+
+BOOST_AUTO_TEST_CASE(test_normal)
 {
     ifstream in ("sample/example1.txt");
 
-    QVERIFY2 (in.is_open(), "Sample file not open for test");
+    BOOST_CHECK (in.is_open());
 
     ItemTable items;
 
@@ -31,5 +38,9 @@ void TSTAPR::test_normal (void)
 
     vector <AprioriTable> expected ({frst,scnd,thrd});
 
-    QVERIFY (expected == candidates);
+    BOOST_CHECK (expected == candidates);
 }
+
+BOOST_AUTO_TEST_SUITE_END()
+
+} // namespace dm

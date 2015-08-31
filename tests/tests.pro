@@ -5,27 +5,18 @@ CONFIG -= app_bundle
 CONFIG += c++11
 
 
-QT += testlib
-
 CONFIG += debug
 
 
 TEMPLATE = app
 
-LIBS += -L../src -lapriori
+LIBS += -L../src -lapriori -lboost_unit_test_framework
 
 HEADERS += \
-    AutoTest.h \
-    TestItemTable.h \
-    TestItemSet.h \
-    TestDBScanner.h \
-    TestApriori.h \
-    TestAprioriTable.h
 
 SOURCES += \
-    main.cpp \
-    TestItemTable.cpp \
-    TestItemSet.cpp \
-    TestDBScanner.cpp \
     TestApriori.cpp \
+    TestDBScanner.cpp \
+    TestItemSet.cpp \
+    TestItemTable.cpp \
     TestAprioriTable.cpp
