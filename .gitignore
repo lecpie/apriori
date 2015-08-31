@@ -2,6 +2,8 @@
 app/app
 tests/tests
 
+apriori
+
 # C++ objects and libs
 *.slo
 *.lo

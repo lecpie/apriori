@@ -102,12 +102,15 @@ ItemSet ITMST::operator + (const ItemSet & b) const
 
 ostream & ITMST::dump (ostream & out) const
 {
-    out << "{";
+    const_iterator it = begin();
 
-    for (iterator it = begin(); it != end(); ++it)
+    // No item
+    if (it == end()) return out;
+
+    out << *it++;
+
+    for ( ; it != end(); ++it)
         out << " " << *it;
-
-    out << " }";
 
     return out;
 
@@ -115,12 +118,15 @@ ostream & ITMST::dump (ostream & out) const
 
 ostream & ITMST::dump (const ItemTable & items, std::ostream & out /* = std::cout */) const
 {
-    out << "{";
+    const_iterator it = begin();
 
-    for (iterator it = begin(); it != end(); ++it)
+    // No item
+    if (it == end()) return out;
+
+    out << items.get_string(*it++);
+
+    for ( ; it != end(); ++it)
         out << " " << items.get_string(*it);
-
-    out << " }";
 
     return out;
 }

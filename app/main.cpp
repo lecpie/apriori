@@ -2,6 +2,8 @@
 #include <fstream>
 #include <vector>
 
+#include <boost/timer/timer.hpp>
+
 #include "Apriori.h"
 #include "AprioriTable.h"
 
@@ -47,13 +49,14 @@ int main(int argc, char * argv[])
         return 3;
     }
 
+    boost::timer::auto_cpu_timer t;
+
     ItemTable items;
     Apriori apriori (is, minconf);
 
     vector <AprioriTable> candidates (apriori.generate_candidates(items));
 
     for (vector <AprioriTable>::size_type i (0); i < candidates.size(); ++i) {
-        cout << "Candidates of size " << i + 1 << " :" << endl;
         candidates[i].dump(items);
     }
 
