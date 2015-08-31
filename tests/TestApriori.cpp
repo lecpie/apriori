@@ -13,7 +13,7 @@ void TSTAPR::test_normal (void)
 {
     ifstream in ("sample/example1.txt");
 
-    QVERIFY (in.is_open());
+    QVERIFY2 (in.is_open(), "Sample file not open for test");
 
     ItemTable items;
 

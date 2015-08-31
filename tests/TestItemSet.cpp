@@ -62,3 +62,21 @@ void TSTITMST::test_union (void)
     QVERIFY (c.size() == 3);
     QVERIFY (c == d);
 }
+
+void TSTITMST::test_minus (void)
+{
+    ItemSet a,b,e;
+
+    a.insert(1); a.insert(2); a.insert(3);
+    b.insert(1), b.insert(3); b.insert(4);
+
+    e.insert(2);
+
+    ItemSet c (a - b);
+
+    QVERIFY (c.size() == 1);
+    QVERIFY (c == e);
+
+    QVERIFY ((a - 2) == (b - 4));
+}
+

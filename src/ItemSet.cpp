@@ -6,7 +6,7 @@ using namespace std;
 using namespace dm;
 
 ITMST::ItemSet (void) {}
-ITMST::ItemSet (unsigned a) { insert(a); }
+ITMST::ItemSet (item_t a) { insert(a); }
 ITMST::ItemSet (ItemSet a, ItemSet b) : ItemSet(a.uni(b)) { }
 
 bool ITMST::operator < (const ItemSet & b) const
@@ -64,7 +64,7 @@ ItemSet ITMST::intersect (const ItemSet & b) const
 
 ItemSet ITMST::uni (const ItemSet & b) const
 {
-    ItemSet res (b);
+    ItemSet res(b);
 
     for (iterator it = begin(); it != end(); ++it) {
         res.insert(*it);
@@ -73,6 +73,32 @@ ItemSet ITMST::uni (const ItemSet & b) const
     return res;
 
 } // uni()
+
+ItemSet ITMST::operator - (const ItemSet & b) const
+{
+    const_iterator srch;
+    ItemSet res(*this);
+
+    for (iterator it = b.begin(); it != b.end(); ++it) {
+        if ((srch = res.find(*it)) != res.end()) {
+            res.erase(srch);
+        }
+    }
+
+    return res;
+
+} // operator - ()
+
+ItemSet ITMST::operator - (const item_t  & b) const
+{
+    return *this - ItemSet(b);
+}
+
+ItemSet ITMST::operator + (const ItemSet & b) const
+{
+    return this->uni(b);
+
+} // operator + ()
 
 ostream & ITMST::dump (ostream & out) const
 {

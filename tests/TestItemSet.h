@@ -22,6 +22,7 @@ private slots:
     void test_comparisons (void);
     void test_intersect   (void);
     void test_union       (void);
+    void test_minus       (void);
 };
 
 DECLARE_TEST (TestItemSet)
