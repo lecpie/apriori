@@ -9,6 +9,7 @@ CONFIG += c++11
 CONFIG += debug
 
 TEMPLATE = lib
+CONFIG += staticlib
 
 TARGET = apriori
 
