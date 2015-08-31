@@ -1,6 +1,5 @@
 #include "Apriori.h"
 
-#include <vector>
 #include <fstream>
 #include <iterator>
 
@@ -21,14 +20,14 @@ void APR::set_minsup    (unsigned minsup)     { m_minsup = minsup;  }
 void APR::set_input     (std::istream & is)   { m_in     = &is;     }
 
 
-vector <AprioriTable> APR::generate_candidates (ItemTable & items)
+APR::table_list_t APR::generate_candidates (ItemTable & items)
 {
     DBScanner scanner (&items);
 
     scanner.set_input(*m_in);
 
-    vector <AprioriTable> l;
-    vector <AprioriTable> c;
+    table_list_t l;
+    table_list_t c;
 
     AprioriTable * cur_l;
     AprioriTable * cur_c;

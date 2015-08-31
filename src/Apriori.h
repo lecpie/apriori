@@ -17,12 +17,14 @@ private:
 
     unsigned m_minsup;
 public:
+    typedef std::vector <AprioriTable> table_list_t;
+
     Apriori (std::istream & in, unsigned minsup);
 
     void set_minsup    (unsigned minsup);
     void set_input     (std::istream & is);
 
-    std::vector <AprioriTable> generate_candidates (ItemTable & items);
+    table_list_t generate_candidates (ItemTable & items);
 
 }; // class Apriori
 
